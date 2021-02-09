@@ -11,6 +11,8 @@ def divideFilePath(filepath):
 
 def camelCaseFyName(str):
   noDashStr = re.sub(r'[_\-]', ' ', str)
-  pascalStr = ''.join(x for x in noDashStr.title() if not x.isspace())
+  pascalStr = re.sub(r' ([a-zA-Z])', lambda x: x.group().upper(), noDashStr)
+  pascalStr = ''.join(x for x in pascalStr if not x.isspace())
+  # pascalStr = ''.join(x for x in noDashStr.title() if not x.isspace())
   camelStr = pascalStr[0].lower() + pascalStr[1:]
   return camelStr
