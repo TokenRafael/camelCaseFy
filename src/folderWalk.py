@@ -5,7 +5,8 @@ def renameEntity(root, entityPath):
   head, name, ext = fCCy.divideFilePath(entityPath)
   newName = fCCy.camelCaseFyName(name)
   if name != newName:
-    rename(path.join(root, head, name, ext), path.join(root, head, newName, ext))
+    rename(path.join(root, head, name + ext), path.join(root, head, newName + ext))
+    print(path.join(root, head, name + ext), '->', path.join(root, head, newName + ext))
 
 def folderCamelCaseFy(rootPath):
   for root, folders, _ in walk(rootPath):
